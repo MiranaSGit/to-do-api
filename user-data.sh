@@ -18,10 +18,10 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: R1234r
             MYSQL_DATABASE: todo_db
-            MYSQL_USER: clarusway
-            MYSQL_PASSWORD: Clarusway_1
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin1234
         networks:
-            - clarusnet
+            - network1
     myapp:
         build: .
         restart: always
@@ -30,10 +30,10 @@ services:
         ports:
             - "80:80"
         networks:
-            - clarusnet
+            - network1
 
 networks:
-    clarusnet:
+    network1:
         driver: bridge
 EOF
 
@@ -61,8 +61,8 @@ app = Flask(__name__)
 
 # Configure mysql database
 app.config['MYSQL_DATABASE_HOST'] = 'database'
-app.config['MYSQL_DATABASE_USER'] = 'clarusway'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Clarusway_1'
+app.config['MYSQL_DATABASE_USER'] = 'admin'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'admin1234'
 app.config['MYSQL_DATABASE_DB'] = 'todo_db'
 app.config['MYSQL_DATABASE_PORT'] = 3306
 mysql = MySQL()
